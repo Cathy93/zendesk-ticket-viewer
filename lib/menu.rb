@@ -51,6 +51,7 @@ def single_ticket
  end
 
  def all_tickets
+   begin
    tickets = @tickets.display_page
     tickets.each do |ticket|
       puts "---------------------------"
@@ -60,9 +61,14 @@ def single_ticket
       puts "Ticket Last Updated At:       #{ticket[:updated_at]}"
       puts "---------------------------"
     end
+  rescue => e
+   connection_error
   end
+  end
+
+  def connection_error
+    puts "--There was a problem connecting to the API--"
+    puts "--Please check your network connection, or try again later--"
+  end
+
  end
-
-
-
-menu = Menu.new.main_menu

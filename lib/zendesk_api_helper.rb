@@ -1,6 +1,8 @@
 require 'zendesk_api'
 
+
 class Zendesk_ticket_helper
+attr_reader :connection
 
   def initalize
   end
@@ -12,6 +14,12 @@ class Zendesk_ticket_helper
       config.password = "Password"
       config.retry = true
       end
+
+      begin
+        @connection = true
+      rescue => e
+        @connection = false
+     end
     end
 
     def display_page
