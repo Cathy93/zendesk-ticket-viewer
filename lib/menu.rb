@@ -1,6 +1,7 @@
 require_relative 'zendesk_api_helper'
 
 class Menu
+  attr_reader :tickets
 
 def initialize
   @tickets = Zendesk_ticket_helper.new
@@ -27,4 +28,28 @@ def main_menu
    else
      puts "--Invalid input!--"
    end
+ end
+
+def single_ticket
+  puts "Please enter the ID of the ticket you wish to see"
+  ticket_id = gets.strip
+
+  ticket = @tickets.display_ticket(ticket_id)
+
+   if ticket == "Help"
+     puts "---------------------------"
+     puts "--Invalid Ticket ID!--"
+     puts "---------------------------"
+   else
+     puts "---------------------------"
+     puts "Ticket ID:           #{ticket[:id]}"
+     puts "Ticket Subject:      #{ticket[:subject]}"
+     puts "Ticket Description:  #{ticket[:description]}"
+     puts "Ticket Last Updated At:       #{ticket[:updated_at]}"
+     puts "---------------------------"
+   end
+ end
 end
+
+
+menu = Menu.new.main_menu
