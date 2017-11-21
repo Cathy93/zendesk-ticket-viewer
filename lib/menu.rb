@@ -49,7 +49,20 @@ def single_ticket
      puts "---------------------------"
    end
  end
-end
+
+ def all_tickets
+   tickets = @tickets.display_page
+    tickets.each do |ticket|
+      puts "---------------------------"
+      puts "Ticket ID:           #{ticket[:id]}"
+      puts "Ticket Subject:      #{ticket[:subject]}"
+      puts "Ticket Description:  #{ticket[:description]}"
+      puts "Ticket Last Updated At:       #{ticket[:updated_at]}"
+      puts "---------------------------"
+    end
+  end
+ end
+
 
 
 menu = Menu.new.main_menu

@@ -14,6 +14,11 @@ class Zendesk_ticket_helper
       end
     end
 
+    def display_page
+      tickets = @client.tickets
+      return tickets
+    end
+
     def display_ticket(ticketID)
       begin
         ticket = @client.tickets.find!(:id => ticketID)
