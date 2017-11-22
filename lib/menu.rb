@@ -24,7 +24,7 @@ def main_menu
    when "2"
      all_tickets
    when "quit"
-     menu.quit
+     quit
    else
      puts "--Invalid input!--"
    end
@@ -66,9 +66,18 @@ def single_ticket
   end
   end
 
+  def quit
+   puts "--Exiting Ticket Viewer Application--"
+ end
+
   def connection_error
+    puts " ---Oh No. You just broke the internet--- "
+    puts " Why would you even do something like that? "
+    puts " --- Just kidding---"
     puts "--There was a problem connecting to the API--"
     puts "--Please check your network connection, or try again later--"
+    puts "---------------------------------"
+
   end
 
  end
